@@ -1,0 +1,32 @@
+<div class="container">
+    <h2 class="text-center">Employee List</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Position</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let employee of employees">
+          <td>{{ employee.name }}</td>
+          <td>{{ employee.position }}</td>
+          <td>{{ employee.email }}</td>
+          <td>{{ employee.phone }}</td>
+          <td>
+            <button  routerLink="/edit-employee/{{employee.id}}" class="btn btn-primary">Edit</button>
+            <!-- <button class="btn btn-success save" type="button" (click)="save(employee)">Save</button> -->
+            <button class="btn btn-danger" (click)="delete(employee)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <button class="btn btn-success" routerLink="/add-employee" style="margin-right: 10px;">Add Employee</button>
+    <!-- <button class="btn btn-success" routerLink="/edit-employee" style="margin-right: 10px;">Edit Employee</button> -->
+  
+  </div>
+  

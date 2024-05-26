@@ -1,0 +1,50 @@
+<div class="container mt-5">
+    <div class="card shadow-lg">
+      <div class="card-header text-center bg-primary text-white">
+       Update Employee 
+      </div>
+      <div class="card-body">
+        <form [formGroup]="employeeForm" >
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text"  readonly class="form-control-plaintext" id="name" value={{name?.value}} #empname/>
+            <div *ngIf="employeeForm.get('name')?.invalid && (employeeForm.get('name')?.dirty || employeeForm.get('name')?.touched)">
+              <small class="text-danger">Name is required.</small>
+            </div>
+          </div>
+  
+          <div class="form-group">
+            <label for="position">Position</label>
+            <input id="position" formControlName="position" class="form-control" #empposition />
+            <div *ngIf="employeeForm.get('position')?.invalid && (employeeForm.get('position')?.dirty || employeeForm.get('position')?.touched)">
+              <small class="text-danger">Position is required.</small>
+            </div>
+          </div>
+  
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input id="email" formControlName="email" readonly class="form-control-plaintext" #empemail />
+            <div *ngIf="employeeForm.get('email')?.invalid && (employeeForm.get('email')?.dirty || employeeForm.get('email')?.touched)">
+              <small class="text-danger">Enter a valid email.</small>
+            </div>
+          </div>
+  
+          <div class="form-group">
+            <label for="phone">Phone</label>
+            <input id="phone" formControlName="phone" class="form-control" #empphone />
+            <div *ngIf="employeeForm.get('phone')?.invalid && (employeeForm.get('phone')?.dirty || employeeForm.get('phone')?.touched)">
+                <small class="text-danger">Phone number is required and must be 10 digits.</small>
+                
+            </div>
+          </div>
+          <br>
+          <button type="submit" class="btn btn-success btn-block" (click)="update(empname.value, empposition.value, empemail.value, empphone.value)" [disabled]="employeeForm.invalid">
+          Update Employee
+          </button>
+          <hr>
+          <button class="btn btn-secondary btn-block" type="button" (click)="goback()">Back</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  
